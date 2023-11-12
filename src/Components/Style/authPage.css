@@ -15,8 +15,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 350px;
     box-shadow: 10px 10px 10px #772ce8;
+   
 }
 
 .register-container {
@@ -43,9 +43,7 @@
     border: none;
     border-radius: 8px;
     width: 410px;
-    height: 30px;
     font-weight: 500;
-    margin-top: 20px;
     transition: 0.3s;
 }
 
