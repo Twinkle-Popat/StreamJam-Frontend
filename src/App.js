@@ -1,5 +1,10 @@
+import {Toaster} from 'react-hot-toast';
+
 export const App = ({ children }) => {
   return (
-    <>{children}</>
+    <>{children}
+    <Toaster position='botton-right' reverseOrder={false} />
+    </>
+    
   );
 };

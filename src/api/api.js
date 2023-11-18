@@ -5,3 +5,26 @@ const apiclient = axios.create({
     timeout: 1000,
 });
 
+export const login = async(data)=>{
+    try{
+        return await apiclient.post('auth/login', data);
+    }
+    catch(exception){
+        return {
+            error: true,
+            exception
+        }
+    }
+}
+
+export const register = async(data)=>{
+    try{
+        return await apiclient.post('auth/register', data);
+    }
+    catch(exception){
+        return {
+            error: true,
+            exception
+        }
+    }
+}

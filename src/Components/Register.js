@@ -3,8 +3,11 @@ import { ValidateEmail } from './Validators/ValidateEmail';
 import { ValidatePassword } from './Validators/ValidatePassword';
 import { ValidateUsername } from './Validators/ValidateUsername';
 import { ValidatePasswordConf } from './Validators/ValidatePasswordConf';
+import { useRegister } from './Hooks/useRegister';
 
 const Register = (props) => {
+    
+  const{register,isloding}=useRegister()
     const {switchAuthHandler} = props
     const[formState, setFormState] = useState({
      email: {
@@ -42,6 +45,7 @@ const Register = (props) => {
       console.log(formState)
     }
     const handleValueChange4 = (e) => {
+
       setFormState({ ...formState, passwordConf: { value: e.target.value, isValid: true, showError: false } })
       console.log(formState)
     }
@@ -79,6 +83,12 @@ const Register = (props) => {
 
     }
 
+    const handleregister = (e)=>{
+      e.preventDefault();
+      
+      register(formState.email.value,formState.password.value,formState.username.value);
+    }
+
   return (
     <div className='register-container'>
         
@@ -88,7 +98,7 @@ const Register = (props) => {
           {/* <img src={logoPlaceholder} alt="" />  */}
           <p style={{fontWeight:"bolder", fontSize:"20px", marginTop:"20px", marginBottom:"-3px"}}>Sign up</p></p>
   <div class="mb-3" style={{marginBottom: "0px" }}>
-    <label style={{marginBottom:"0"}}for="exampleInputPassword1" class="form-label">Username</label>
+    <label style={{marginBottom:"0"}} class="form-label">Username</label>
     <input style={{marginBottom: "0" }} onBlur={(e) => validateInput(e, 'username')} onChange={handleValueChange3} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
     <span className='auth-form-validation-message'>
       {formState.username.showError && 'Write a valid username'}
@@ -120,7 +130,7 @@ const Register = (props) => {
   </div>
  
   
-  <button style={{marginBottom: "0px" }} type="submit" class="btn btn-primary my-3" disabled={!formState.password.isValid || !formState.email.isValid || formState.username.isValid|| (formState.password.isValid!=formState.passwordConf.isValid)}>Register</button>
+  <button onClick={handleregister} style={{marginBottom: "0px" }} type="submit" class="btn btn-primary my-3" disabled={!formState.password.isValid || !formState.email.isValid || !formState.username.isValid|| (formState.password.value=formState.passwordConf.value)|| isloding}>Register</button>
 </form>
        
         <span  style={{marginBottom:"20px"}}  onClick={switchAuthHandler}>Already have an account ? Sign in</span>

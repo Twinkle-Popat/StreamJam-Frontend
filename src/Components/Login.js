@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { ValidateEmail } from './Validators/ValidateEmail';
 import { ValidatePassword } from './Validators/ValidatePassword';
-
+import { useLogin } from './Hooks/uselogin';
+import toast from 'react-hot-toast';
 const Login = (props) => {
+
+  const{login,isloding}=useLogin()
     const {switchAuthHandler} = props
     const[formState, setFormState] = useState({
      email: {
@@ -51,6 +54,12 @@ const Login = (props) => {
 
     }
 
+    const handlelogin = (e)=>{
+      e.preventDefault();
+      
+      login(formState.email.value,formState.password.value);
+    }
+
   return (
     <div className='login-container'>
         
@@ -74,7 +83,7 @@ const Login = (props) => {
     </span>
   </div>
   
-  <button type="submit" class="btn btn-primary my-3" disabled={!formState.password.isValid || !formState.email.isValid}>Submit</button>
+  <button onClick={handlelogin} type="submit" class="btn btn-primary my-3" disabled={!formState.password.isValid || !formState.email.isValid}>Submit</button>
 </form>
        
         <span style={{marginBottom:"40px"}}  onClick={switchAuthHandler}>Don't have account? Sign up</span>
