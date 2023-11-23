@@ -1,0 +1,12 @@
+import React from 'react'
+
+const StreamKey = (props) => {
+    const {streamKey} = props;
+  return (
+    <div className='settings-stream-key-container'>
+        <span>{streamKey}</span>
+    </div>
+  )
+}
+
+export default StreamKey

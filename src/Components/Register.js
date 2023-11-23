@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ValidateEmail } from './Validators/ValidateEmail';
 import { ValidatePassword } from './Validators/ValidatePassword';
-import { ValidateUsername } from './Validators/ValidateUsername';
+import  ValidateUsername  from './Validators/ValidateUsername';
 import { ValidatePasswordConf } from './Validators/ValidatePasswordConf';
 import { useRegister } from './Hooks/useRegister';
 
